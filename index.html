@@ -43,17 +43,17 @@
 		var Bounce = {};
 	}
 
-	(function () {
-		Bounce.ball = function () {
+	(function() {
+		Bounce.ball = function() {
 			var that = this;
 
 			//console.log(this);
 			return {
-				setTrigger: function () {
+				setTrigger: function() {
 					that._init();
 				},
-				
-				stopTrigger: function(){
+
+				stopTrigger: function() {
 					that._stopBounce();
 				}
 			};
@@ -65,12 +65,12 @@
 			posStart: 0,
 
 			posEnd: 0,
-			
+
 			runDown: null,
-			
+
 			runUp: null,
 
-			_init: function () {
+			_init: function() {
 				var container = document.getElementById("container"),
 					Containerheight = container.offsetHeight,
 					ball = document.getElementById("ball"),
@@ -82,26 +82,26 @@
 				this.startBounce(this.posEnd, ball);
 
 			},
-			
-			validateBounceHeight: function(bounceHeight){			
-				var bounceHeight = (bounceHeight%20 !== 0)?(Math.floor(bounceHeight/20)*20):bounceHeight;				
-				return bounceHeight;			
+
+			validateBounceHeight: function(bounceHeight) {
+				var bounceHeight = (bounceHeight % 20 !== 0) ? (Math.floor(bounceHeight / 20) * 20) : bounceHeight;
+				return bounceHeight;
 			},
 
-			startBounce: function (height, ball) {
+			startBounce: function(height, ball) {
 				ball.style.left = "0px";
 				ball.style.top = "0px";
 				this.moveDown(this.posStart, height);
 			},
-			
-			_stopBounce: function(){
+
+			_stopBounce: function() {
 				clearInterval(this.runDown);
 				clearInterval(this.runUp);
 				ball.style.left = "0px";
-				ball.style.top = "0px";				
+				ball.style.top = "0px";
 			},
 
-			moveDown: function (startPos, endPos) {
+			moveDown: function(startPos, endPos) {
 
 				var startPos = parseInt(startPos, 10),
 					endPos = parseInt(endPos, 10),
@@ -112,7 +112,7 @@
 					return true;
 				}
 
-				obj.runDown = setInterval(function () {
+				obj.runDown = setInterval(function() {
 					ball.style.top = parseInt(top, 10) + "px";
 					//console.log(top);
 					if (top === endPos) {
@@ -123,13 +123,13 @@
 				}, 30);
 			},
 
-			moveUp: function (startPos, endPos) {
+			moveUp: function(startPos, endPos) {
 				var startPos = parseInt(startPos, 10),
 					endPos = parseInt(endPos, 10),
 					top = endPos,
 					obj = this;
 
-				obj.runUp = setInterval(function () {
+				obj.runUp = setInterval(function() {
 					ball.style.top = parseInt(top, 10) + "px";
 					top -= 20;
 					if (top === startPos) {
